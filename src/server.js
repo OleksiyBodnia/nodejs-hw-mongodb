@@ -36,7 +36,7 @@ export const startServer = () => {
       });
     } catch (err) {
       res.status(500).json({
-        status: 'error',
+        status: 500,
         message: 'Failed to fetch contacts',
         error: err.message,
       });
@@ -50,7 +50,7 @@ export const startServer = () => {
 
       if (!contact) {
         return res.status(404).json({
-          status: 'error',
+          status: 404,
           message: `Contact with id ${contactId} not found`,
         });
       }
@@ -62,7 +62,7 @@ export const startServer = () => {
       });
     } catch (err) {
       res.status(500).json({
-        status: 'error',
+        status: 500,
         message: 'Failed to fetch contact',
         error: err.message,
       });
