@@ -15,10 +15,10 @@ router.get('/contacts/:contactId', isValidId, ctrlWrapper(getContactByIdControll
 
 router.post('/contacts', validateBody(createContactSchema),ctrlWrapper(createContactController));
 
-router.delete('/contacts/:contactId', isValidId,ctrlWrapper(deleteContactController));
+router.delete('/contacts/:contactId', isValidId, ctrlWrapper(deleteContactController));
 
-router.put('/contacts/:contactId', validateBody(updateContactSchema),ctrlWrapper(upsertContactController));
+router.put('/contacts/:contactId', isValidId, validateBody(updateContactSchema),ctrlWrapper(upsertContactController));
 
-router.patch('/contacts/:contactId', validateBody(updateContactSchema),ctrlWrapper(patchContactController));
+router.patch('/contacts/:contactId', isValidId,validateBody(updateContactSchema),ctrlWrapper(patchContactController));
 
 export default router;
