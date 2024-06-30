@@ -14,7 +14,7 @@ const parseContactType = (type) => {
     if (bool.toLowerCase() === 'false') return false;
   };
 
-  export const parseContactFilterParams = (query) => {
+  export const parseContactFilterParams = (query, userId) => {
     const { type, isFavourite } = query;
 
     const parsedType = parseContactType(type);
@@ -23,5 +23,6 @@ const parseContactType = (type) => {
     return {
       type: parsedType,
       isFavourite: parsedIsFavourite,
+      userId
     };
   };
