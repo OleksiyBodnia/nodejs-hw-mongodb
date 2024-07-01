@@ -4,8 +4,7 @@ import { THIRTY_DAYS } from '../constants/index.js';
 export const registerUserController = async (req, res) => {
   const user = await registerUser(req.body);
 
-  res.json({
-    status: 201,
+  res.status(201).json({
     message: 'Successfully registred a user',
     data: user,
   });
@@ -23,8 +22,7 @@ export const loginUserController = async (req, res) => {
       expires: new Date(Date.now() + THIRTY_DAYS),
     });
 
-    res.json({
-      status: 200,
+    res.status(200).json({
       message: 'Successfully logged in an user!',
       data: {
         accessToken: session.accessToken,
@@ -62,8 +60,7 @@ export const refreshUserSessionController = async (req, res) => {
 
   setupSession(res, session);
 
-  res.json({
-    status: 200,
+  res.status(200).json({
     message: 'Successfully refreshed a session!',
     data: {
       accessToken: session.accessToken,
@@ -73,9 +70,8 @@ export const refreshUserSessionController = async (req, res) => {
 
 export const requestResetEmailController = async (req, res) => {
   await requestResetToken(req.body.email);
-  res.json({
+  res.status(200).json({
     message: 'Reset password email was successfully sent!',
-    status: 200,
     data: {},
   });
 };
@@ -83,9 +79,8 @@ export const requestResetEmailController = async (req, res) => {
 export const resetPasswordController = async (req, res) => {
   await resetPassword(req.body);
 
-  res.json({
+  res.status(200).json({
     message: "Password was successfully reset!",
-    status: 200,
     data: {},
   });
 };
